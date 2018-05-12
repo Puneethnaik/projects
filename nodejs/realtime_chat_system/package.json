@@ -1,0 +1,12 @@
+{
+  "name": "realtime_chat_system",
+  "version": "1.0.0",
+  "description": "a realtime chat system ",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js"
+  },
+  "author": "puneeth n naik",
+  "license": "MIT"
+}
