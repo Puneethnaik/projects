@@ -18,10 +18,10 @@ class MiniBatchOptimizer:
         current_value = 2
         while abs(prev_value - current_value) >= self.tolerance:
             gradient = 0
-            for i in range(0, number_of_points + 1, self.batch_size):
-                mini_batch = X[i : i + self.batch_size, :]
-                gradient += self.learning_rate * np.matmul(np.transpose(mini_batch), np.subtract(np.matmul(mini_batch, self.theta), self.y[i : i + self.batch_size]))
-            self.theta = self.theta - gradient
+            for i in range(0, self.number_of_points + 1, self.batch_size):
+                mini_batch = self.X[i : i + self.batch_size, :]
+                gradient += self.learning_rate  * np.matmul(np.transpose(mini_batch), np.subtract(np.matmul(mini_batch, self.theta), self.y[i : i + self.batch_size]))
+            self.theta = self.theta - (1 / self.number_of_points) * gradient
             prev_value = current_value
             current_value = np.sum(np.square(np.matmul(self.X, self.theta) - self.y))
         return self.theta

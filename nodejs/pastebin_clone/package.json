@@ -1,0 +1,16 @@
+{
+  "name": "pastebin_clone",
+  "version": "1.0.0",
+  "description": "this is the clone of pastebin.com",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "puneeth",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "dialogflow_bot",
+  "version": "1.0.0",
+  "description": "this is a chatbot made in dialogflow",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nlp",
+    "chatbot",
+    "machine",
+    "learning",
+    "upwork"
+  ],
+  "author": "puneeth",
+  "license": "MIT",
+  "dependencies": {
+    "apiai": "^4.0.3",
+    "body-parser": "^1.18.3",
+    "dialogflow": "^0.5.0",
+    "express": "^4.16.3",
+    "request": "^2.87.0"
+  }
+}

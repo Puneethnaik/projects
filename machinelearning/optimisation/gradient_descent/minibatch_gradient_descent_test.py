@@ -1,5 +1,5 @@
 #testing gradient_descent.py
-import gradient_descent
+import minibatch_gradient_descent
 import numpy as np
 import time
 
@@ -22,10 +22,11 @@ for x in X:
 y = np.array(y)
 y = np.resize(y, new_shape=(number_of_points, 1))
 
-gd = gradient_descent.GradientDescentOptimizer(learning_rate=0.5,tolerance=10**-5, X=X, y=y)
+gd = minibatch_gradient_descent.MiniBatchOptimizer(learning_rate=0.5,tolerance=10**-5, X=X, y=y, batch_size = 1000)
 
 t0 = time.time()
 print(gd.optimize())
 t1 = time.time()
 
 print("time taken by the optimiser : ", t1 - t0)
+

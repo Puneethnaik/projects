@@ -1,0 +1,12 @@
+{
+  "name": "fast_food_guru",
+  "version": "1.0.0",
+  "description": "a food review website project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon server/server.js"
+  },
+  "author": "Puneeth N Naik",
+  "license": "MIT"
+}
