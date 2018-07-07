@@ -17,6 +17,7 @@ connection.connect(function(err){
     }
     else console.log("mysql successfully connected");
 })
+
 //
 
 router.post('/', function(req, res){
@@ -27,7 +28,7 @@ router.post('/', function(req, res){
     console.log("the timestamp now is " + timestamp);
     var paste = {
         email : req.session.user,
-        timestamp : timestamp,
+        timestamp : timestamp / 1000,
         expiryDuration : req.body.pasteExpiration,
         title : req.body.pasteTitle,
         body : req.body.pasteBody,

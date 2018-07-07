@@ -1,0 +1,22 @@
+<% include ./partials/header_dup%>
+<div class = "container">
+<% include ./partials/utilityFunctions%>
+    <h1> Your Pastes </h1>
+    <h2> Public Pastes</h2>
+    <div id = "publicPastes" style = "margin : 35px;">
+        <%for(var i = 0 ; i < public_pastes.length; i++){%>
+            <h3><%=public_pastes[i]["title"]%></h3>
+            <p><%=public_pastes[i]["body"]%></p>
+            <p><% var current_time = new Date(); var createdAt = convert_epoch_to_time(current_time.getTime() - public_pastes[i]["timestamp"] * 1000)%>created <%=createdAt%> ago</p>
+        <%}%>
+    </div>
+
+    <h2> Private Pastes</h2>
+    <div id = "privatePastes" style = "margin : 35px;">
+        <%for(var i = 0 ; i < private_pastes.length; i++){%>
+            <h3><%=private_pastes[i]["title"]%></h3>
+            <p><%=private_pastes[i]["body"]%></p>
+            <p><% var current_time = new Date(); var createdAt = convert_epoch_to_time(current_time.getTime() - private_pastes[i]["timestamp"] * 1000)%>created <%=createdAt%> ago</p>
+        <%}%>
+    </div>
+</div>
