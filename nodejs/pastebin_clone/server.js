@@ -27,7 +27,7 @@ connection.connect(function(err){
 //cron jobs
 new CronJob('00 * * * * *', function() {
      console.log('You will see this message every second');
-    connection.query("delete from Paste where unix_timestamp(now()) - `expiryDuration` * 60 > `timestamp`", function(err, results, fields){
+    connection.query("delete from Paste where unix_timestamp(now()) - `expiryDuration` * 60 > `timestamp` / 1000", function(err, results, fields){
         if(!err){
             console.log("cron job #1 executed successfully");
         }
@@ -94,6 +94,7 @@ app.get('/profile', function(req, res){
 app.use('/api/processPaste', require('./routes/processPaste'));
 
 app.get('/managePastes', function(req, res){
+    if(!req.session.user)res.redirect('/login');
     var private_pastes, public_pastes;
     var Query = "";
     var userID = req.session.user;
@@ -128,8 +129,24 @@ app.get('/managePastes', function(req, res){
             }
         })
     }
-    });
+});
+app.get('/explorePastes', function(req, res){
 
+    connection.query("select title, body, timestamp from Paste where exposure = 'public' order by timestamp desc;", function(err, resultPublic, fields){
+        if(err){
+            console.log("Some error occured");
+            return 'error';
+        }
+        else {
+            res.render('explorePastes.ejs', {title:'Explore Pastes', user:req.session.user, public_pastes : resultPublic});
+        }
+    })
+});
+
+app.get('/logout', function(req, res){
+    req.session.user = undefined;
+    res.redirect('/profile');
+})
 app.listen(3000, function(req, res){
     console.log("We are connected");
 });

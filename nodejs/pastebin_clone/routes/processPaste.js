@@ -28,7 +28,7 @@ router.post('/', function(req, res){
     console.log("the timestamp now is " + timestamp);
     var paste = {
         email : req.session.user,
-        timestamp : timestamp / 1000,
+        timestamp : timestamp,
         expiryDuration : req.body.pasteExpiration,
         title : req.body.pasteTitle,
         body : req.body.pasteBody,
