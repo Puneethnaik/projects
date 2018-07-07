@@ -1,10 +1,26 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var login = require('./routes/loginRoutes');
+var ejs = require('ejs');
+var path = require('path'); 
+var session = require('client-sessions');
 
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+//sessions
+app.use(session({
+    cookieName : 'session',
+    secret : 'pastebin_session'
+}));
+
+
+
+app.use(express.static(path.join(__dirname, 'public/')));
+
 
 app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
@@ -22,6 +38,24 @@ router.post('/register', login.register);
 router.post('/login', login.login);
 
 app.use('/api', router);
+
+app.get('/', function(req, res){
+    console.log("index page");
+});
+
+app.get('/login', function(req, res){
+    res.render('login.ejs', {title : "hello please login", type : "good"})
+})
+
+app.get('/register', function(req, res){
+    res.render('register.ejs', {type : "good"});
+});
+
+app.get('/profile', function(req, res){
+    if(!req.session.user)res.redirect('/login');
+    else
+        res.render('profileHomepage.ejs', {title:'Dashboard'});
+});
 
 app.listen(3000, function(req, res){
     console.log("We are connected");
