@@ -37,7 +37,7 @@ router.get('/', function(req, res){
 router.post('/register', login.register);
 router.post('/login', login.login);
 
-app.use('/api', router);
+app.use('/api/loginlogout', router);
 
 app.get('/', function(req, res){
     console.log("index page");
@@ -54,8 +54,10 @@ app.get('/register', function(req, res){
 app.get('/profile', function(req, res){
     if(!req.session.user)res.redirect('/login');
     else
-        res.render('profileHomepage.ejs', {title:'Dashboard'});
+        res.render('dashboard.ejs', {title:'Dashboard', type:"dashboard"});
 });
+
+app.use('/api/processPaste', require('./routes/processPaste'));
 
 app.listen(3000, function(req, res){
     console.log("We are connected");

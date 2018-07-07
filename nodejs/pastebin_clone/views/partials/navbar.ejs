@@ -20,11 +20,7 @@
                 </li>
                   <li class="dropdown">
                      <a
-                      <%if(authType == "principal" || authType == "admin"){%>
-                        href="/admin"
-                      <%}else{%>
-                        href="/department?departmentId=<%=departmentId%>"
-                      <%}%>
+                      
                         >                        
                         <i class="material-icons hidden-lg hidden-md">store</i>
                         <p>Department</p>
@@ -37,13 +33,7 @@
                       </a>
                       <ul class="dropdown-menu">
                         <li>
-                            <% if(authType == "hod" || authType == "coordinator") {%>
-                                <a href="/department?departmentId=<%=departmentId%>">Profile</a>
-                            <% } else if(authType == "principal" || authType == "admin"){ %>
-                                <a href="/admin">Profile</a>
-                            <%} else {%>
-                                <a href="/faculty">Profile</a>
-                            <%}%>    
+                              
                         </li>
                         <li>
                             <a href="/v1/apis/logout">Logout</a>

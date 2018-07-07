@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title><%=title%></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</head>
+  <body>
+        <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                 <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                 </div>
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="/profile">Home</a></li>
+                        <li><a href="/managePaste">Manage Pastes</a></li>
+                        <li><a href="/explore">Explore Pastes</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                      </ul>
+                    </div>
+            </nav>     
+<div class = "container">
+        
+    <div class = "row">
+        <div class = "col-md-2"></div>
+        <div class = "col-md-8">
+            <br>
+            <br>
+            <br>
+            <form action = "/api/processPaste/" method = "POST">
+            <div class="form-group">
+                <div style = "margin:15px;">
+                <label for = "paste">New Paste:</label>
+                <textarea class="form-control" rows = "5" id = "paste" name = "pasteBody"></textarea>
+                </div>
+                <div style = "margin:15px;">
+                <label for="pasteExpiration"> Paste Expiration</label>
+                <input type = "text" class = "form-control" name = "pasteExpiration" placeholder = "minutes 1 - 120">
+                </div>
+                <div id = "pasteExposureDiv" style = "margin:15px;">
+                    <label for="pasteExposure" style="margin-right:35px"> Paste Exposure</label>    
+                    <label class="radio-inline" style = "margin:15px;"><input type="radio" value="public" name = "pasteExposure" >Public</label>
+                    <label class="radio-inline" style = "margin:15px;"><input type="radio" value="private" name = "pasteExposure" >Private</label>
+                </div>
+                <div style = "margin:15px;">
+                    <label for="pasteTitle"> Paste Title</label>
+                    <input type = "text" class = "form-control" name = "pasteTitle">
+                </div>
+                <button style = "margin:15px;" type="submit" class="btn">Make New Paste</button>
+            </div>
+            </form>
+        </div>
+        <div class = "col-md-2"></div>
+    </div>
+</div>
+</body>
+</html>
